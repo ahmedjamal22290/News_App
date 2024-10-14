@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:p/custom_widgets/main_widget.dart';
-import 'package:p/moduls/Main_Model.dart';
+import 'package:p/custom_widgets/top_list_widget.dart';
 import 'package:p/moduls/top_List_Pic.dart';
 
 class homePage extends StatelessWidget {
@@ -33,30 +32,15 @@ class homePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
-            height: 200,
+          SizedBox(
+            height: 150,
             child: ListView.builder(
-              itemCount: topPic.length,
               scrollDirection: Axis.horizontal,
+              itemCount: topList.length,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(
-                      top: 20.0, right: 10, left: 10, bottom: 20),
-                  child: Container(
-                    child: Image.asset(
-                      topPic[index],
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                return topWIdget(
+                  buildingVar: topList[index],
                 );
-              },
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: newsList.length,
-              itemBuilder: (context, index) {
-                return mainWidget(x: newsList[index]);
               },
             ),
           ),
