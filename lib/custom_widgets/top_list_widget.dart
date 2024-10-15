@@ -6,12 +6,12 @@ class topWIdget extends StatelessWidget {
   final topListWidget buildingVar;
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 25),
+      margin: EdgeInsets.only(left: 25, bottom: 25),
       height: 150,
-      width: 200,
+      width: 250,
       decoration: BoxDecoration(
         color: Colors.black,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(17),
         image: DecorationImage(
           fit: BoxFit.fill,
           opacity: 0.7,
@@ -24,6 +24,8 @@ class topWIdget extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontSize: 20,
+            letterSpacing: 8,
           ),
         ),
       ),

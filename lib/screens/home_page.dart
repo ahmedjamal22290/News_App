@@ -1,5 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:p/custom_widgets/bottom_list_widget.dart';
 import 'package:p/custom_widgets/top_list_widget.dart';
+import 'package:p/moduls/bottom_list_data.dart';
 import 'package:p/moduls/top_List_Pic.dart';
 
 class homePage extends StatelessWidget {
@@ -44,6 +47,16 @@ class homePage extends StatelessWidget {
               },
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: bottomDataList.length,
+              itemBuilder: (context, index) {
+                return bottomWidget(
+                  nedeedVar: bottomDataList[index],
+                );
+              },
+            ),
+          )
         ],
       ),
     );
