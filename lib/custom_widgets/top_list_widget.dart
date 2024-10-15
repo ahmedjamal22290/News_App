@@ -6,7 +6,7 @@ class topWIdget extends StatelessWidget {
   final topListWidget buildingVar;
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 25, bottom: 25),
+      margin: EdgeInsets.only(left: 15, bottom: 25, right: 15),
       height: 150,
       width: 250,
       decoration: BoxDecoration(

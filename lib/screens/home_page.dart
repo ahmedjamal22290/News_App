@@ -33,22 +33,28 @@ class homePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 150,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: topList.length,
-              itemBuilder: (context, index) {
-                return topWIdget(
-                  buildingVar: topList[index],
-                );
-              },
+      body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 150,
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: topList.length,
+                itemBuilder: (context, index) {
+                  return topWIdget(
+                    buildingVar: topList[index],
+                  );
+                },
+              ),
             ),
           ),
-          Expanded(
+          SliverToBoxAdapter(
             child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: bottomDataList.length,
               itemBuilder: (context, index) {
                 return bottomWidget(
