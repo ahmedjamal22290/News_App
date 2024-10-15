@@ -61,18 +61,6 @@ class homePage extends StatelessWidget {
               },
             ),
           ),
-          // SliverToBoxAdapter(
-          //   child: ListView.builder(
-          //     shrinkWrap: true,
-          //     physics: NeverScrollableScrollPhysics(),
-          //     itemCount: bottomDataList.length,
-          //     itemBuilder: (context, index) {
-          //       return bottomWidget(
-          //         nedeedVar: bottomDataList[index],
-          //       );
-          //     },
-          //   ),
-          // )
         ],
       ),
     );
