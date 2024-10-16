@@ -1,5 +1,3 @@
-import "package:flutter/material.dart";
-
 class topListWidget {
   topListWidget({required this.title, required this.pic});
   String title, pic;

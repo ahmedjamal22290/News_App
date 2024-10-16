@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:p/moduls/top_List_Pic.dart';
 
 class topWIdget extends StatelessWidget {
-  const topWIdget({required this.buildingVar});
+  const topWIdget({super.key, required this.buildingVar});
   final topListWidget buildingVar;
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 15, bottom: 25, right: 15),
+      margin: const EdgeInsets.only(left: 15, bottom: 25, right: 15),
       height: 150,
       width: 250,
       decoration: BoxDecoration(
@@ -21,7 +22,7 @@ class topWIdget extends StatelessWidget {
       child: Center(
         child: Text(
           buildingVar.title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 20,

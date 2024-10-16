@@ -1,19 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:p/custom_widgets/List_news_widget.dart';
 import 'package:p/custom_widgets/bottom_list_widget.dart';
 import 'package:p/custom_widgets/top_list_widget.dart';
 import 'package:p/moduls/bottom_list_data.dart';
 import 'package:p/moduls/top_List_Pic.dart';
+import 'package:p/services/news_services.dart';
 
 class homePage extends StatelessWidget {
   const homePage({super.key});
+  // newsServices News = await newsServices(Dio());
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: RichText(
-          text: TextSpan(
+          text: const TextSpan(
               text: "News",
               style: TextStyle(
                 fontSize: 25,
@@ -34,13 +37,13 @@ class homePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150,
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: topList.length,
                 itemBuilder: (context, index) {
@@ -51,16 +54,7 @@ class homePage extends StatelessWidget {
               ),
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: bottomDataList.length,
-              (context, index) {
-                return bottomWidget(
-                  nedeedVar: bottomDataList[index],
-                );
-              },
-            ),
-          ),
+          ListNewsWidget(),
         ],
       ),
     );

@@ -1,10 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:p/moduls/artical_model.dart';
 import 'package:p/moduls/bottom_list_data.dart';
 
 class bottomWidget extends StatelessWidget {
-  const bottomWidget({required this.nedeedVar});
-  final bottomDataClass nedeedVar;
+  const bottomWidget({super.key, required this.ArticalNeededInfo});
+  // final bottomDataClass nedeedVar;
+  final ArticalModel ArticalNeededInfo;
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -17,14 +20,15 @@ class bottomWidget extends StatelessWidget {
               color: Colors.black,
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage(
-                  nedeedVar.pic,
+                image: NetworkImage(
+                  ArticalNeededInfo.image ??
+                      'https://th.bing.com/th/id/OIP.2Sw7OWq_1hrOdTrBraUFIgAAAA?w=200&h=200&rs=1&pid=ImgDetMain',
                 ),
               ),
             ),
           ),
         ),
-        Divider(
+        const Divider(
           height: 3.5,
           thickness: 0,
         ),
@@ -34,8 +38,8 @@ class bottomWidget extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textDirection: TextDirection.rtl,
-            nedeedVar.mainTitle,
-            style: TextStyle(
+            ArticalNeededInfo.title!,
+            style: const TextStyle(
                 color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),
           ),
         ),
@@ -45,14 +49,14 @@ class bottomWidget extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textDirection: TextDirection.rtl,
-            nedeedVar.subTitle,
-            style: TextStyle(
-                color: const Color(0xFF656464),
+            ArticalNeededInfo.subtitle ?? 'there is no subtitle',
+            style: const TextStyle(
+                color: Color(0xFF656464),
                 fontSize: 17,
                 fontWeight: FontWeight.bold),
           ),
         ),
-        Divider(
+        const Divider(
           height: 10,
           thickness: 0,
         ),
