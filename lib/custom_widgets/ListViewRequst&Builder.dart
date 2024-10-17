@@ -4,33 +4,53 @@ import 'package:p/custom_widgets/List_news_widget.dart';
 import 'package:p/moduls/artical_model.dart';
 import 'package:p/services/news_services.dart';
 
-class newsListViewBuilder extends StatelessWidget {
-  bool isLoading = true;
+class newsListViewBuilder extends StatefulWidget {
+  @override
+  State<newsListViewBuilder> createState() => _newsListViewBuilderState();
+}
+
+class _newsListViewBuilderState extends State<newsListViewBuilder> {
+  var future;
+  @override
+  void initState() {
+    super.initState();
+    future = newsServices(Dio()).getFootballNews();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: newsServices(Dio()).getFootballNews(),
+    return FutureBuilder<List<ArticalModel>>(
+      future: future,
       builder: (context, snapshot) {
-        return ListNewsWidget(
-          articles: snapshot.data ?? [],
-        );
+        if (snapshot.hasData) {
+          return ListNewsWidget(
+            articles: snapshot.data!,
+          );
+        } else if (snapshot.hasError) {
+          return error_widget();
+        } else {
+          return LoadingWidget();
+        }
       },
     );
-    // return isLoading
-    //     ? LoadingWidget()
-    //     : articles.isEmpty
-    //         ? SliverFillRemaining(
-    //             child: Center(
-    //               child: Text(
-    //                 'oops there is something wrong, try again later',
-    //                 style: TextStyle(color: Colors.black, fontSize: 30),
-    //               ),
-    //             ),
-    //           )
-    //         : ListNewsWidget(
-    //             articles: articles,
-    //           );
+  }
+}
+
+class error_widget extends StatelessWidget {
+  const error_widget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverFillRemaining(
+      child: Center(
+        child: Text(
+          'oops there is something wrong, try again later',
+          style: TextStyle(color: Colors.black, fontSize: 30),
+        ),
+      ),
+    );
   }
 }
 
