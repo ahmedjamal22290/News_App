@@ -17,6 +17,7 @@ class newsServices {
       // var jesonData = response.data;
       List<ArticalModel> articlesList = [];
       for (var element in jesonData['articles']) {
+        if (element['title'] == '[Removed]') continue;
         articlesList.add(ArticalModel(
             image: element['urlToImage'],
             subtitle: element['description'],

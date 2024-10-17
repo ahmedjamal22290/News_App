@@ -15,36 +15,44 @@ class newsListViewBuilder extends StatefulWidget {
 
 class _newsListViewBuilderState extends State<newsListViewBuilder> {
   bool isLoading = true;
-  List<ArticalModel> articles = [];
-  void initState() {
-    super.initState();
-    getFootBallNewsMeth();
-  }
+  // List<ArticalModel> articles = [];
+  // void initState() {
+  //   super.initState();
+  //   getFootBallNewsMeth();
+  // }
 
-  Future<void> getFootBallNewsMeth() async {
-    articles = await newsServices(Dio()).getFootballNews();
+  // Future<void> getFootBallNewsMeth() async {
+  //   articles = await newsServices(Dio()).getFootballNews();
 
-    setState(() {
-      isLoading = false;
-    });
-  }
+  //   setState(() {
+  //     isLoading = false;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? LoadingWidget()
-        : articles.isEmpty
-            ? SliverFillRemaining(
-                child: Center(
-                  child: Text(
-                    'oops there is something wrong, try again later',
-                    style: TextStyle(color: Colors.black, fontSize: 30),
-                  ),
-                ),
-              )
-            : ListNewsWidget(
-                articles: articles,
-              );
+    return FutureBuilder(
+      future: newsServices(Dio()).getFootballNews(),
+      builder: (context, snapshot) {
+        return ListNewsWidget(
+          articles: snapshot.data ?? [],
+        );
+      },
+    );
+    // return isLoading
+    //     ? LoadingWidget()
+    //     : articles.isEmpty
+    //         ? SliverFillRemaining(
+    //             child: Center(
+    //               child: Text(
+    //                 'oops there is something wrong, try again later',
+    //                 style: TextStyle(color: Colors.black, fontSize: 30),
+    //               ),
+    //             ),
+    //           )
+    //         : ListNewsWidget(
+    //             articles: articles,
+    //           );
   }
 }
 
