@@ -1,0 +1,75 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:p/custom_widgets/List_news_widget.dart';
+import 'package:p/moduls/artical_model.dart';
+import 'package:p/services/news_services.dart';
+
+class newsListViewBuilder extends StatefulWidget {
+  const newsListViewBuilder({
+    super.key,
+  });
+
+  @override
+  State<newsListViewBuilder> createState() => _newsListViewBuilderState();
+}
+
+class _newsListViewBuilderState extends State<newsListViewBuilder> {
+  bool isLoading = true;
+  List<ArticalModel> articles = [];
+  void initState() {
+    super.initState();
+    getFootBallNewsMeth();
+  }
+
+  Future<void> getFootBallNewsMeth() async {
+    articles = await newsServices(Dio()).getFootballNews();
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return isLoading
+        ? LoadingWidget()
+        : articles.isEmpty
+            ? SliverFillRemaining(
+                child: Center(
+                  child: Text(
+                    'oops there is something wrong, try again later',
+                    style: TextStyle(color: Colors.black, fontSize: 30),
+                  ),
+                ),
+              )
+            : ListNewsWidget(
+                articles: articles,
+              );
+  }
+}
+
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: Center(
+        child: Container(
+          height: 80,
+          width: 70,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: const Color.fromARGB(126, 158, 158, 158)),
+          child: CircularProgressIndicator(
+            strokeAlign: -6,
+            color: Colors.blue,
+          ),
+        ),
+      ),
+    );
+  }
+}

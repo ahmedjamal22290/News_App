@@ -5,27 +5,11 @@ import 'package:p/moduls/artical_model.dart';
 import 'package:p/moduls/bottom_list_data.dart';
 import 'package:p/services/news_services.dart';
 
-class ListNewsWidget extends StatefulWidget {
-  const ListNewsWidget({
-    super.key,
-  });
+class ListNewsWidget extends StatelessWidget {
+  List<ArticalModel> articles;
 
-  @override
-  State<ListNewsWidget> createState() => _ListNewsWidgetState();
-}
+  ListNewsWidget({super.key, required this.articles});
 
-class _ListNewsWidgetState extends State<ListNewsWidget> {
-  List<ArticalModel> articles = [];
-  void initState() {
-    super.initState();
-    getFootBallNewsMeth();
-  }
-
-  Future<void> getFootBallNewsMeth() async {
-    articles = await newsServices(Dio()).getFootballNews();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
