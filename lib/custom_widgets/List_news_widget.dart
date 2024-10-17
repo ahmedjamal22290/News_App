@@ -8,7 +8,8 @@ import 'package:p/services/news_services.dart';
 class ListNewsWidget extends StatelessWidget {
   List<ArticalModel> articles;
 
-  ListNewsWidget({super.key, required this.articles});
+  ListNewsWidget(
+      {super.key, required this.articles, List<ArticalModel>? buildingVar});
 
   Widget build(BuildContext context) {
     return SliverList(

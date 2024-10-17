@@ -14,7 +14,7 @@ class _newsListViewBuilderState extends State<newsListViewBuilder> {
   @override
   void initState() {
     super.initState();
-    future = newsServices(Dio()).getFootballNews();
+    future = newsServices(Dio()).topHeadLines();
   }
 
   @override

@@ -1,12 +1,14 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:p/moduls/artical_model.dart';
-import 'package:p/moduls/bottom_list_data.dart';
 
-class bottomWidget extends StatelessWidget {
-  const bottomWidget({super.key, required this.ArticalNeededInfo});
-  // final bottomDataClass nedeedVar;
-  final ArticalModel ArticalNeededInfo;
+class categoryWidget extends StatelessWidget {
+  const categoryWidget({
+    super.key,
+    required this.articles,
+  });
+
+  final ArticalModel articles;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +23,7 @@ class bottomWidget extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: NetworkImage(
-                  ArticalNeededInfo.image ??
+                  articles.image ??
                       'https://png.pngtree.com/png-clipart/20230502/original/pngtree-oops-speech-bubble-in-doodle-png-image_9134602.png',
                 ),
               ),
@@ -38,7 +40,7 @@ class bottomWidget extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textDirection: TextDirection.rtl,
-            ArticalNeededInfo.title!,
+            articles.title!,
             style: const TextStyle(
                 color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),
           ),
@@ -49,7 +51,7 @@ class bottomWidget extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textDirection: TextDirection.rtl,
-            ArticalNeededInfo.subtitle ?? 'there is no subtitle',
+            articles.subtitle ?? 'there is no subtitle',
             style: const TextStyle(
                 color: Color(0xFF656464),
                 fontSize: 17,

@@ -4,7 +4,6 @@ import 'package:p/screens/home_page.dart';
 import 'package:p/services/news_services.dart';
 
 void main() {
-  newsServices(Dio()).getFootballNews();
   runApp(const newsApp());
 }
 
