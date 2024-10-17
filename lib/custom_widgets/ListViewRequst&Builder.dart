@@ -4,30 +4,8 @@ import 'package:p/custom_widgets/List_news_widget.dart';
 import 'package:p/moduls/artical_model.dart';
 import 'package:p/services/news_services.dart';
 
-class newsListViewBuilder extends StatefulWidget {
-  const newsListViewBuilder({
-    super.key,
-  });
-
-  @override
-  State<newsListViewBuilder> createState() => _newsListViewBuilderState();
-}
-
-class _newsListViewBuilderState extends State<newsListViewBuilder> {
+class newsListViewBuilder extends StatelessWidget {
   bool isLoading = true;
-  // List<ArticalModel> articles = [];
-  // void initState() {
-  //   super.initState();
-  //   getFootBallNewsMeth();
-  // }
-
-  // Future<void> getFootBallNewsMeth() async {
-  //   articles = await newsServices(Dio()).getFootballNews();
-
-  //   setState(() {
-  //     isLoading = false;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
