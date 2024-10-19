@@ -10,17 +10,17 @@ import 'package:p/custom_widgets/top_list_widget.dart';
 import 'package:p/moduls/artical_model.dart';
 import 'package:p/services/news_services.dart';
 
-class businessPage extends StatefulWidget {
-  const businessPage({super.key, required this.http});
+class categoryPage extends StatefulWidget {
+  const categoryPage({super.key, required this.http});
   final String http;
   @override
-  State<businessPage> createState() => _businessPageState(http: http);
+  State<categoryPage> createState() => _categoryPageState(http: http);
 }
 
-class _businessPageState extends State<businessPage> {
+class _categoryPageState extends State<categoryPage> {
   List<ArticalModel> articles = [];
   String http;
-  _businessPageState({required this.http});
+  _categoryPageState({required this.http});
   var future;
 
   void initState() {

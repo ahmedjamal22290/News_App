@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p/moduls/top_List_Pic.dart';
-import 'package:p/screens/business_page.dart';
+import 'package:p/screens/category_page.dart';
 
 class topWIdget extends StatelessWidget {
   const topWIdget({super.key, required this.buildingVar});
@@ -13,7 +13,7 @@ class topWIdget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return businessPage(http: buildingVar.http);
+              return categoryPage(http: buildingVar.http);
             },
           ),
         );

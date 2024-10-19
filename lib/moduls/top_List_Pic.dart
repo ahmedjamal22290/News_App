@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:p/screens/business_page.dart';
+import 'package:p/screens/category_page.dart';
 
 class topListWidget {
   topListWidget({required this.title, required this.pic, required this.http});
