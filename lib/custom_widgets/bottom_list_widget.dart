@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:p/custom_widgets/ListViewRequst&Builder.dart';
 import 'package:p/moduls/artical_model.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -23,7 +24,6 @@ class _BottomWidgetState extends State<BottomWidget> {
           context,
           MaterialPageRoute(
             builder: (context) => webViewMyWidget(
-              controller: WebViewController(),
               webSite: widget.ArticalNeededInfo.URL!,
             ),
           ),
@@ -89,9 +89,7 @@ class _BottomWidgetState extends State<BottomWidget> {
 }
 
 class webViewMyWidget extends StatefulWidget {
-  const webViewMyWidget(
-      {super.key, required this.controller, required this.webSite});
-  final WebViewController controller;
+  const webViewMyWidget({super.key, required this.webSite});
   final String webSite;
 
   @override
@@ -105,15 +103,13 @@ class _webViewMyWidgetState extends State<webViewMyWidget> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {
-            // Update loading bar.
-          },
-          onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith('https://www.youtube.com/')) {
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          },
+          onProgress: (int progress) {},
+          // onNavigationRequest: (NavigationRequest request) {
+          //   if (request.url.startsWith('https://www.youtube.com/')) {
+          //     return NavigationDecision.prevent;
+          //   }
+          //   return NavigationDecision.navigate;
+          // },
         ),
       )
       ..loadRequest(Uri.parse(widget.webSite));
