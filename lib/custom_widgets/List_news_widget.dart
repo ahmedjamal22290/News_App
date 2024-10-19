@@ -15,7 +15,7 @@ class ListNewsWidget extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         childCount: articles.length,
         (context, index) {
-          return bottomWidget(
+          return BottomWidget(
             ArticalNeededInfo: articles[index],
           );
         },

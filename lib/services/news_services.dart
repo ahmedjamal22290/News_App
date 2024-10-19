@@ -19,9 +19,11 @@ class newsServices {
       for (var element in jesonData['articles']) {
         if (element['title'] == '[Removed]') continue;
         articlesList.add(ArticalModel(
-            image: element['urlToImage'],
-            subtitle: element['description'],
-            title: element['title']));
+          image: element['urlToImage'],
+          subtitle: element['description'],
+          title: element['title'],
+          URL: element['url'],
+        ));
       }
       return articlesList;
     } on Exception catch (e) {
@@ -42,9 +44,11 @@ class newsServices {
             element['urlToImage'] != null) {
           articles.add(
             ArticalModel(
-                image: element['urlToImage'],
-                subtitle: element['description'],
-                title: element['title']),
+              image: element['urlToImage'],
+              subtitle: element['description'],
+              title: element['title'],
+              URL: element['url'],
+            ),
           );
         }
       }
@@ -54,10 +58,10 @@ class newsServices {
     }
   }
 
-  Future<List<ArticalModel>> category(String http) async {
+  Future<List<ArticalModel>> category({required String category}) async {
     try {
-      // String http =
-      //     'https://newsapi.org/v2/everything?apiKey=dcc2c50ff4b5471eb8ffcbdfd4c49de1&q=business&sortBy=popularity';
+      String http =
+          'https://newsapi.org/v2/everything?apiKey=dcc2c50ff4b5471eb8ffcbdfd4c49de1&q=$category';
 
       Response response = await dio.get(http);
       Map<String, dynamic> jesonData = response.data;
@@ -68,9 +72,11 @@ class newsServices {
             element['urlToImage'] != null) {
           articles.add(
             ArticalModel(
-                image: element['urlToImage'],
-                subtitle: element['description'],
-                title: element['title']),
+              image: element['urlToImage'],
+              subtitle: element['description'],
+              title: element['title'],
+              URL: element['url'],
+            ),
           );
         }
       }

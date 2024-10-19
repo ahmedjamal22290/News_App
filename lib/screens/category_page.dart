@@ -14,18 +14,19 @@ class categoryPage extends StatefulWidget {
   const categoryPage({super.key, required this.http});
   final String http;
   @override
-  State<categoryPage> createState() => _categoryPageState(http: http);
+  State<categoryPage> createState() => _categoryPageState();
 }
 
 class _categoryPageState extends State<categoryPage> {
   List<ArticalModel> articles = [];
-  String http;
-  _categoryPageState({required this.http});
-  var future;
 
+  var future;
+  @override
   void initState() {
     super.initState();
-    future = newsServices(Dio()).category(http);
+    future = newsServices(Dio()).category(
+      category: widget.http,
+    );
   }
 
   @override
