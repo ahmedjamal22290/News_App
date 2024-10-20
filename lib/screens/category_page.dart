@@ -8,6 +8,7 @@ import 'package:p/custom_widgets/bottom_list_widget.dart';
 import 'package:p/custom_widgets/category_widget.dart';
 import 'package:p/custom_widgets/top_list_widget.dart';
 import 'package:p/moduls/artical_model.dart';
+import 'package:p/screens/home_page.dart';
 import 'package:p/services/news_services.dart';
 
 class categoryPage extends StatefulWidget {
@@ -32,7 +33,7 @@ class _categoryPageState extends State<categoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: darkMode ? Colors.black : Colors.white,
       body: FutureBuilder<List<ArticalModel>>(
         future: future,
         builder: (context, snapshot) {

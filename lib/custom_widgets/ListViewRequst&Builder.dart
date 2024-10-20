@@ -5,6 +5,7 @@ import 'package:p/moduls/artical_model.dart';
 import 'package:p/services/news_services.dart';
 
 class newsListViewBuilder extends StatefulWidget {
+  newsListViewBuilder();
   @override
   State<newsListViewBuilder> createState() => _newsListViewBuilderState();
 }

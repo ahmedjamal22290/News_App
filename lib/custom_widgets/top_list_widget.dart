@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:p/moduls/top_List_Pic.dart';
 import 'package:p/screens/category_page.dart';
+import 'package:p/screens/home_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class topWIdget extends StatelessWidget {
@@ -35,7 +36,7 @@ class topWIdget extends StatelessWidget {
         child: Center(
           child: Text(
             buildingVar.title,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 20,

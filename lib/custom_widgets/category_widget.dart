@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:p/custom_widgets/top_list_widget.dart';
 import 'package:p/moduls/artical_model.dart';
+import 'package:p/moduls/top_List_Pic.dart';
+import 'package:p/screens/home_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class categoryWidget extends StatelessWidget {
@@ -48,8 +51,8 @@ class categoryWidget extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               textDirection: TextDirection.rtl,
               articles.title!,
-              style: const TextStyle(
-                  color: Colors.black,
+              style: TextStyle(
+                  color: darkMode ? Colors.white : Colors.black,
                   fontSize: 23,
                   fontWeight: FontWeight.bold),
             ),

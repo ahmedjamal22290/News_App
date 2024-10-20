@@ -2,11 +2,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:p/custom_widgets/ListViewRequst&Builder.dart';
 import 'package:p/moduls/artical_model.dart';
+import 'package:p/screens/home_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class BottomWidget extends StatefulWidget {
   const BottomWidget({super.key, required this.ArticalNeededInfo});
-
   final ArticalModel ArticalNeededInfo;
 
   @override
@@ -59,8 +59,8 @@ class _BottomWidgetState extends State<BottomWidget> {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textDirection: TextDirection.rtl,
-              style: const TextStyle(
-                  color: Colors.black,
+              style: TextStyle(
+                  color: darkMode ? Colors.white : Colors.black,
                   fontSize: 23,
                   fontWeight: FontWeight.bold),
             ),
