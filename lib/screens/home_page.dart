@@ -33,7 +33,6 @@ class _homePageState extends State<homePage>
     }
   }
 
-  // Callback to update darkMode and change the scaffold color
   void toggleDarkMode() {
     setState(() {
       backgroundMode = !backgroundMode;
@@ -48,7 +47,7 @@ class _homePageState extends State<homePage>
       appBar: AppBar(
         backgroundColor: darkMode ? Colors.black : Colors.white,
         leading: darkModeWidgetAnnimation(
-          onToggle: toggleDarkMode, // Pass the callback here
+          onToggle: toggleDarkMode,
         ),
         title: RichText(
           text: TextSpan(
@@ -138,7 +137,6 @@ class _darkModeWidgetAnnimationState extends State<darkModeWidgetAnnimation>
             darkMode = false;
           });
         }
-        // Notify parent (homePage) about the dark mode change
         widget.onToggle();
       },
     );
